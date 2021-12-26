@@ -14,7 +14,7 @@ function drawFavoritesProductsUI(allProducts = []) {
 
       <div class="product-item-desc">
         <h2>${item.title}</h2>
-        <p>Lorem ipsum began as scrambled</p>
+        <p>${item.desc}</p>
         <span> Price: ${item.price}</span><br>
         <span> Quantity: ${item.quantity}</span>
       </div>

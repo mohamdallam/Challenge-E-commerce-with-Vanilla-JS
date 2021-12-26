@@ -54,14 +54,16 @@
   </body>
   <section class="create-product-page">
     <div class="container">
-        <form action="">
+        <form id="create-form">
+            <input type="file" id="upload-image-file" />
             <input type="text" placeholder="Name..." id="product-name"/>
             <input type="text" placeholder="Description..." id="product-desc"/>
     
-            <select name="" id="product-size" >
-                <option value="price">800</option>
-                <option value="price">900</option>
-                <option value="price">1000</option>
+            <select name="" id="product-price" >
+                <option value="" hidden>Select Price</option>
+                <option value="800">800</option>
+                <option value="900">900</option>
+                <option value="1000">1000</option>
             </select>
             <input type="submit" value="create"/>
         </form>
@@ -69,6 +71,7 @@
   </section>
  
   <script src="js/user.js"></script>
+  <script src="js/data.js"></script>
   <script src="js/create-product.js"></script>
 
 </html>

@@ -22,7 +22,7 @@ let drawProductUi;
 
     <div class="product-item-desc">
       <a onclick="saveItemData(${item.id})">${item.title}</a>
-      <p>Lorem ipsum began as scrambled</p>
+      <p>${item.desc}</p>
       <span>${item.price}</span>
     </div>
 
