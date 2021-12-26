@@ -16,9 +16,10 @@
     />
     <link />
 
-    <title>ShoppingCard | Home Page</title>
+    <title>ShoppingCard | Create Product Page</title>
 
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/create-product.css" />
   </head>
   <body>
     <header>
@@ -51,15 +52,23 @@
       </div>
     </header>
   </body>
-  <section class="home">
+  <section class="create-product-page">
     <div class="container">
-      <input id="search" placeholder="Search..." type="text" />
-      <div class="product"></div>
+        <form action="">
+            <input type="text" placeholder="Name..." id="product-name"/>
+            <input type="text" placeholder="Description..." id="product-desc"/>
+    
+            <select name="" id="product-size" >
+                <option value="price">800</option>
+                <option value="price">900</option>
+                <option value="price">1000</option>
+            </select>
+            <input type="submit" value="create"/>
+        </form>
     </div>
-    <a href="createproduct.html" class="create-product-icon"><i class="fa fa-plus"></i> </a>
   </section>
  
   <script src="js/user.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/script.js"></script>
+  <script src="js/create-product.js"></script>
+
 </html>

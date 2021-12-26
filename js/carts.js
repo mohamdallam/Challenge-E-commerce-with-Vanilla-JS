@@ -24,7 +24,7 @@ function drawCartProductsUI(allProducts = []) {
     </div>`;
   });
 
-  productsDom.innerHTML = productUI;
+  productsDom.innerHTML = productUI.join("");
 }
 
 drawCartProductsUI();

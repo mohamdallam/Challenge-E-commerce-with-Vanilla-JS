@@ -19,24 +19,27 @@ function drawFavoritesProductsUI(allProducts = []) {
         <span> Quantity: ${item.quantity}</span>
       </div>
       <div class="product-item-actions">
-        <button class="add-to-cart">RemoveFrom Facorites</button>
+        <button 
+        class="add-to-cart" 
+        onclick="removeItemFromCart(${item.id})">
+        RemoveFrom Facorites
+        </button>
       </div>
     </div>`;
   });
 
-  productsDom.innerHTML = productUI;
+  productsDom.innerHTML = productUI.join("");
 }
 
 drawFavoritesProductsUI();
 
-// function removeItemFromCart(id) {
-//   let productFavorite = localStorage.getItem("productFavorite");
-//   if (productFavorite) {
-//     let item = JSON.parse(productFavorite);
-//     let filterItems = item.filter((item) => item.id !== id);
-//     localStorage.setItem("productFavorite", JSON.stringify(filterItems));
-//     drawFavoritesProductsUI(filterItems);
-//   }
-// }
+function removeItemFromCart(id) {
+  let productFavorite = localStorage.getItem("productFavorite");
+  if (productFavorite) {
+    let item = JSON.parse(productFavorite);
+    let filterItems = item.filter((item) => item.id !== id);
+    localStorage.setItem("productFavorite", JSON.stringify(filterItems));
+    drawFavoritesProductsUI(filterItems);
+  }
+}
 
-//onclick="removeItemFromCart(${item.id})

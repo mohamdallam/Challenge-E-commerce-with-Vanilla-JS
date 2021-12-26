@@ -5,7 +5,7 @@ let cartProductMenu = document.querySelector(".cart-products");
 let cartProductDivDom = document.querySelector(".cart-products div");
 let badgeDom = document.querySelector(".badge");
 let shoppingCartIcon = document.querySelector(".shoppingCart");
-let products = JSON.parse(localStorage.getItem("products"));
+let products = productsDB;
 
 // Open Card Menu
 shoppingCartIcon.addEventListener("click", openCardMenu);
@@ -38,8 +38,8 @@ let drawProductUi;
   </div>`;
   });
 
-  productsDom.innerHTML = productUI;
-})(JSON.parse(localStorage.getItem("products")));
+  productsDom.innerHTML = productUI.join("");
+})(JSON.parse(localStorage.getItem("products"))||products);
 
 // Ckeck if Items in Local Storage  //Invoke Function
 let addedItem = localStorage.getItem("productsInCart")
@@ -55,27 +55,29 @@ if (addedItem) {
 }
 
 // Add To Cart
-let allItem = [];
+// let allItem = [];
 function addedToCart(id) {
   if (localStorage.getItem("username")) {
-    let chosenItem = products.find((item) => item.id === id);
-    let item = allItem.find((i) => i.id === chosenItem.id);
+    let product = products.find((item) => item.id === id);
+    let isProductInCart = addedItem.some((i) => i.id === product.id);
 
-    if (item) {
-      chosenItem.quantity += 1;
+    if (isProductInCart) {
+      addedItem=addedItem.map(p=>{
+        if(p.id===product.id)p.quantity+=1;
+        return p;
+      })
     } else {
-      allItem.push(chosenItem);
+      addedItem.push(product);
     }
+    //UI
     cartProductDivDom.innerHTML = "";
-    allItem.forEach((item) => {
+    addedItem.forEach((item) => {
       cartProductDivDom.innerHTML += `<p>${item.title} ${item.quantity}</p>`;
     });
 
-    addedItem = [...addedItem, chosenItem];
-
-    let uniqeProduct = getUniqeArr(addedItem, "id");
-    localStorage.setItem("productsInCart", JSON.stringify(uniqeProduct));
-
+   // Save Data
+    localStorage.setItem("productsInCart", JSON.stringify(addedItem));
+  // Add Counter of Item
     let cartProductItems = document.querySelectorAll(".cart-products div p");
     console.log(cartProductItems);
     badgeDom.style.display = "block";
